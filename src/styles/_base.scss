@@ -1,0 +1,43 @@
+:root {
+  --color-purple: #4b145b;
+  --color-grey: #eae6eb;
+  --color-grey2: #324d67;
+}
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+@mixin respond($breakpoint) {
+  @if ($breakpoint==tab-land) {
+    @media (max-width: 75em) {
+      //1200px
+      @content;
+    }
+  }
+  @if ($breakpoint==tab-port) {
+    @media (max-width: 56.25em) {
+      @content;
+    }
+  }
+  @if ($breakpoint==phone) {
+    @media (max-width: 50em) {
+      @content;
+    }
+  }
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  @include respond(phone) {
+    font-size: 45%;
+  }
+}
+body {
+  font-size: 1.5rem;
+  background-color: var(--color-purple);
+}
